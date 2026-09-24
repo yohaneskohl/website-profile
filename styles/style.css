@@ -1280,25 +1280,30 @@ html[data-theme="dark"] .socials a:hover {
   font-size: 13px;
 }
 
+/* Mobile responsive */
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 55px;
+    gap: 50px;
+  }
+
+  .hero-content {
+    width: 100%;
   }
 
   .profile-wrap {
+    width: 100%;
     justify-content: center;
   }
 
-  .hero::before {
-    right: -260px;
-    top: 18%;
-    opacity: 0.7;
+  .profile-card {
+    width: min(330px, 80vw);
+    height: 420px;
   }
 
   .section-heading {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 20px;
   }
 
   .about-grid,
@@ -1307,7 +1312,7 @@ html[data-theme="dark"] .socials a:hover {
   }
 
   .timeline-item {
-    grid-template-columns: 140px 1fr;
+    grid-template-columns: 130px 1fr;
     gap: 20px;
   }
 
@@ -1322,16 +1327,18 @@ html[data-theme="dark"] .socials a:hover {
 }
 
 @media (max-width: 700px) {
-  section {
-    width: min(var(--max), calc(100% - 28px));
+  body {
+    overflow-x: hidden;
   }
 
+  section {
+    width: calc(100% - 28px);
+    max-width: none;
+  }
+
+  /* Navbar */
   #navbar {
     padding: 10px 12px;
-  }
-
-  nav.scrolled {
-    padding: 7px 12px;
   }
 
   .nav-inner {
@@ -1343,20 +1350,29 @@ html[data-theme="dark"] .socials a:hover {
     font-size: 16px;
   }
 
+  .menu-btn {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+
   .nav-links {
     position: fixed;
     top: 76px;
     left: 12px;
     right: 12px;
-    max-height: calc(100dvh - 90px);
-    overflow-y: auto;
-
-    padding: 12px;
 
     display: flex;
     flex-direction: column;
     align-items: stretch;
+
     gap: 3px;
+    padding: 12px;
+
+    max-height: calc(100dvh - 90px);
+    overflow-y: auto;
 
     border: 1px solid var(--border);
     border-radius: 18px;
@@ -1386,16 +1402,22 @@ html[data-theme="dark"] .socials a:hover {
     transform: translateY(0);
   }
 
+  .nav-links li {
+    width: 100%;
+  }
+
   .nav-links a {
+    width: 100%;
     min-height: 44px;
+
     display: flex;
     align-items: center;
+
     padding: 11px 12px;
   }
 
   .nav-cta {
     justify-content: center;
-    margin-top: 4px;
   }
 
   .theme-toggle {
@@ -1404,13 +1426,7 @@ html[data-theme="dark"] .socials a:hover {
     margin: 7px auto 0;
   }
 
-  .menu-btn {
-    display: grid;
-    place-items: center;
-    width: 42px;
-    height: 42px;
-  }
-
+  /* Hero */
   .hero {
     min-height: auto;
     padding-top: 115px;
@@ -1418,25 +1434,12 @@ html[data-theme="dark"] .socials a:hover {
   }
 
   .hero-grid {
+    grid-template-columns: 1fr;
     gap: 45px;
   }
 
-  .hero::before {
-    width: 320px;
-    height: 320px;
-    right: -190px;
-    top: 16%;
-  }
-
-  .hero::after {
-    right: 0;
-    bottom: 4%;
-    font-size: 90px;
-  }
-
-  .eyebrow {
-    margin-bottom: 20px;
-    font-size: 11px;
+  .hero-content {
+    width: 100%;
   }
 
   h1 {
@@ -1445,19 +1448,16 @@ html[data-theme="dark"] .socials a:hover {
     line-height: 0.92;
   }
 
-  h1 .outline::after {
-    height: 5px;
-  }
-
   .hero-description {
     max-width: 100%;
-    margin-top: 25px;
     font-size: 14px;
     line-height: 1.7;
   }
 
   .hero-actions {
-    margin-top: 27px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     gap: 9px;
   }
 
@@ -1466,31 +1466,30 @@ html[data-theme="dark"] .socials a:hover {
     padding: 11px 15px;
   }
 
+  /* Profile */
   .profile-wrap {
     width: 100%;
+    min-width: 0;
+  }
+
+  .profile-card {
+    width: min(285px, 80vw);
+    height: 370px;
   }
 
   .profile-wrap::before {
     width: 220px;
     height: 220px;
-    transform: translate(20px, -20px);
   }
 
-  .profile-card {
-    width: min(100%, 285px);
-    height: 370px;
-  }
-
-  .profile-wrap::after {
-    right: max(0px, calc(50% - 160px));
-    bottom: 20px;
-  }
-
+  /* Section */
   .content-section {
     padding: 90px 0;
   }
 
   .section-heading {
+    grid-template-columns: 1fr;
+    gap: 18px;
     margin-bottom: 42px;
   }
 
@@ -1504,8 +1503,9 @@ html[data-theme="dark"] .socials a:hover {
     line-height: 1.7;
   }
 
-  .about-grid,
-  .projects {
+  /* About */
+  .about-grid {
+    grid-template-columns: 1fr;
     gap: 14px;
   }
 
@@ -1528,10 +1528,7 @@ html[data-theme="dark"] .socials a:hover {
     gap: 10px;
   }
 
-  .stat strong {
-    font-size: 30px;
-  }
-
+  /* Skills */
   .skills {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1548,8 +1545,14 @@ html[data-theme="dark"] .socials a:hover {
     height: 24px;
   }
 
+  /* Projects */
+  .projects {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
   .project {
-    min-height: auto;
+    min-width: 0;
   }
 
   .project-visual {
@@ -1582,6 +1585,11 @@ html[data-theme="dark"] .socials a:hover {
     font-size: 23px;
   }
 
+  /* Experience */
+  .timeline {
+    width: 100%;
+  }
+
   .timeline-item {
     display: grid;
     grid-template-columns: 1fr;
@@ -1591,6 +1599,10 @@ html[data-theme="dark"] .socials a:hover {
 
   .timeline-date {
     font-size: 11px;
+  }
+
+  .timeline-content {
+    min-width: 0;
   }
 
   .timeline-content h3 {
@@ -1608,14 +1620,20 @@ html[data-theme="dark"] .socials a:hover {
     font-size: 11px;
   }
 
+  /* Journals */
+  .journal-list {
+    width: 100%;
+  }
+
   .journal-row {
-    grid-template-columns: 32px 1fr;
+    grid-template-columns: 32px minmax(0, 1fr);
     gap: 12px;
     padding: 22px 8px;
   }
 
   .journal-row-top {
     flex-direction: column;
+    align-items: flex-start;
     gap: 8px;
   }
 
@@ -1637,6 +1655,7 @@ html[data-theme="dark"] .socials a:hover {
     margin-top: 8px;
   }
 
+  /* Contact */
   .contact {
     padding: 45px 24px;
     border-radius: 22px;
@@ -1657,10 +1676,11 @@ html[data-theme="dark"] .socials a:hover {
     font-size: 13px;
   }
 
+  /* Footer */
   footer {
-    width: min(var(--max), calc(100% - 28px));
+    width: calc(100% - 28px);
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 18px;
     padding: 35px 0 45px;
   }
@@ -1677,7 +1697,7 @@ html[data-theme="dark"] .socials a:hover {
 
 @media (max-width: 430px) {
   section {
-    width: min(var(--max), calc(100% - 24px));
+    width: calc(100% - 24px);
   }
 
   .hero {
@@ -1694,16 +1714,17 @@ html[data-theme="dark"] .socials a:hover {
   }
 
   .hero-actions {
+    flex-direction: column;
     width: 100%;
   }
 
   .btn {
-    flex: 1;
+    width: 100%;
     text-align: center;
   }
 
   .profile-card {
-    width: min(100%, 270px);
+    width: min(270px, 78vw);
     height: 350px;
   }
 
