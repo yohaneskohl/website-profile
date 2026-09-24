@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "antislop-ai": "file:cli"
+  }
+}
