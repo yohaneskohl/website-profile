@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/birthday",
+      "destination": "/birthday/index.html"
+    }
+  ]
+}
